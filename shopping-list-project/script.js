@@ -36,8 +36,8 @@ function onAddItemSubmit(e) {
 	}
 
 
-  // Create item DOM element
-  addItemToDOM(newItem);
+	// Create item DOM element
+	addItemToDOM(newItem);
 
 	// Add item to local storage
 	addItemToStorage(newItem);
@@ -82,7 +82,7 @@ function createIcon(classes) {
 function addItemToStorage(item) {
 	let itemsFromStorage = getItemsFromStorage();
 
-  // Add new item to array
+	// Add new item to array
 	itemsFromStorage.push(item);
 
 	// Convert to JSON string and set to local storage
