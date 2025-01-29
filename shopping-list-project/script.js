@@ -10,7 +10,8 @@ let isEditMode = false;
 function onAddItemSubmit(e) {
 	e.preventDefault();
 
-	const newItem = itemInput.value
+	let newItem = itemInput.value.toLowerCase();
+	newItem = newItem.charAt(0).toUpperCase() + newItem.slice(1)
 
 	// Validate Input
 	if (newItem === '') {
@@ -26,6 +27,11 @@ function onAddItemSubmit(e) {
 		itemToEdit.classList.remove('edit-mode');
 		itemToEdit.remove();
 		isEditMode = false;
+	} else {
+		if (checkIfItemExists(newItem)) {
+			alert('That item already exists!');
+			return;
+		}
 	}
 
 
@@ -102,6 +108,11 @@ function onClickItem(e) {
 	}
 }
 
+function checkIfItemExists(item) {
+	const itemsFromStorage = getItemsFromStorage();
+	return itemsFromStorage.includes(item);
+}
+
 function setItemToEdit(item) {
 	isEditMode = true;
 
@@ -166,7 +177,7 @@ function filterItems(e) {
 
 function checkUI() {
 	itemInput.value = '';
-	
+
 	const items = itemList.querySelectorAll('li');
 
 	if (items.length === 0) {
