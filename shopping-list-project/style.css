@@ -14,6 +14,13 @@ body {
   line-height: 1.5;
   color: #333;
   background-color: #f5f5f5;
+  transition: .7s ease-out;
+}
+
+.theme-dark {
+  color: #fff;
+  background-color: #333;
+  transition: .7s ease-out;
 }
 
 header {
@@ -41,6 +48,25 @@ header img {
 
 .edit-mode {
   color: #ccc;
+}
+
+.theme {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+ 
+}
+.button-icon {
+  padding:10px;
+  margin-top: 2%;
+ 
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 /* Form & Input */

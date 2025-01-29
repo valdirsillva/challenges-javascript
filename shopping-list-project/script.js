@@ -5,6 +5,7 @@ const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 const formBtn = itemForm.querySelector('button');
+const btnTheme = document.querySelector('.btn-theme');
 let isEditMode = false;
 
 function onAddItemSubmit(e) {
@@ -195,6 +196,23 @@ function checkUI() {
 	isEditMode = false;
 }
 
+function onToggleTheme(e) {
+	let theme = document.body.classList.toggle('theme-dark');
+	let themeIcon = document.querySelector('#theme-icon');
+	let btnAddItem = document.querySelector('.btn');
+
+	if (theme) {
+		btnAddItem.style.border  = '1px solid #ccc';
+		btnTheme.style.border  = '1px solid #ccc';
+		themeIcon.classList.remove('fa-sun')
+		themeIcon.classList.add('fa-moon')
+	} else {
+		themeIcon.classList.remove('fa-moon')
+		themeIcon.classList.add('fa-sun')
+		btnTheme.style.border  = '1px solid transparent';
+	}
+}
+
 // Initialize app
 function init() {
 	// Event Listeners 
@@ -202,6 +220,8 @@ function init() {
 	itemList.addEventListener('click', onClickItem);
 	clearBtn.addEventListener('click', clearItems);
 	itemFilter.addEventListener('input', filterItems);
+
+	btnTheme.addEventListener('click', onToggleTheme)
 	document.addEventListener('DOMContentLoaded', displayItems);
 
 	checkUI();
