@@ -8,16 +8,17 @@ class Modal {
   addEventListeners() {
     this._modalBtn.addEventListener('click', this.open.bind(this))
     window.addEventListener('click', this.outSideClick.bind(this))
+    document.addEventListener('closemodal', () => this.close())
   }
 
   open() {
-    this._modal.computedStyleMap.display = 'block'
+    this._modal.style.display = 'block'
   }
-  
+
   close() {
-    this._modal.computedStyleMap.display = 'none'
+    this._modal.style.display = 'none'
   }
-  
+
   outSideClick(e) {
     if (e.target === this._modal) {
       this.close()

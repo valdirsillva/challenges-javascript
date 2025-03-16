@@ -1,3 +1,4 @@
+import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
@@ -19,7 +20,13 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 // Body parser Middleware
 app.use(express.json())
-app.use(express.urlencoded({ extended: false}))
+app.use(express.urlencoded({ extended: false }))
+
+// cors Middleware
+app.use(cors({
+    origin: ['http://localhost:5000', 'http://localhost:3000'],
+    credentials: true
+}))
 
 app.get('/', (req, res) => {
     res.send({ message: 'Welcome to ythe RamdomIdeas API' })
